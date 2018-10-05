@@ -8,14 +8,32 @@ import { HttpModule } from '@angular/http';
 
 import { Angular2TokenService } from 'angular2-token';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';//picked my ones :D
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MDialogComponent } from './m-dialog/m-dialog.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+
+    //angular material
+    BrowserAnimationsModule,
+    //imported material components:
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    MDialogComponent
   ],
   providers: [ Angular2TokenService ],
   bootstrap: [AppComponent]
