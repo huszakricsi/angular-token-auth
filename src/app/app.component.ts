@@ -8,7 +8,7 @@ import { MDialogComponent } from './m-dialog/m-dialog.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'angular-token-auth';
@@ -20,12 +20,12 @@ export class AppComponent {
     this.authToken.signIn({email: "user@mail.net", password: "secretpassword"}).subscribe(
 
       res => {
-        let opened_dialog=this.dialog.open(MDialogComponent,{data: res._body});
+        let opened_dialog=this.dialog.open(MDialogComponent,{data: res});
         opened_dialog.afterClosed().subscribe(result => {console.log(result)});
       },
 
       err => {
-        let opened_dialog=this.dialog.open(MDialogComponent,{data: err._body});
+        let opened_dialog=this.dialog.open(MDialogComponent,{data: err});
         opened_dialog.afterClosed().subscribe(result => {console.log(result)});
       }
     );
@@ -34,12 +34,12 @@ export class AppComponent {
     this.authToken.signIn({email: "lol@bad.com", password: "wontwork"}).subscribe(
 
       res => {
-        let opened_dialog=this.dialog.open(MDialogComponent,{data: res._body});
+        let opened_dialog=this.dialog.open(MDialogComponent,{data: res});
         opened_dialog.afterClosed().subscribe(result => {console.log(result)});
       },
 
       err => {
-        let opened_dialog=this.dialog.open(MDialogComponent,{data: err._body});
+        let opened_dialog=this.dialog.open(MDialogComponent,{data: err});
         opened_dialog.afterClosed().subscribe(result => {console.log(result)});
       }
     );
