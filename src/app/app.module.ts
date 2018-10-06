@@ -47,7 +47,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatToolbarModule
   ],
   entryComponents: [
-    MDialogComponent
+    MDialogComponent,
+    AuthDialogComponent
   ],
   providers: [ Angular2TokenService ],
   bootstrap: [AppComponent]

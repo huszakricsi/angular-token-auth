@@ -3,8 +3,8 @@
     <span class="spacer"></span>
     <div class="toolbar-button">
         <span *ngIf="!tokenAuthService.userSignedIn()"><!--If not logged in-->
-          <button mat-flat-button color="primary" >Log in</button>
-          <button mat-flat-button color="primary">Register</button>
+          <button mat-flat-button color="primary" (click)='openAuthDialog("login")'>Log in</button>
+          <button mat-flat-button color="primary" (click)='openAuthDialog("register")'>Register</button>
         </span>
         <span *ngIf="tokenAuthService.userSignedIn()"><!--If logged in-->
           <button mat-stroked-button color="primary">{{tokenAuthService.login}}</button>

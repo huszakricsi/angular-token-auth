@@ -1,3 +1,18 @@
-<p>
-  auth-dialog works!
-</p>
+<div *ngIf='data.authmode=="login"'>
+  <app-login-form></app-login-form>
+  <p>
+    Need an account?
+  </p>  
+  <p>
+    <button mat-stroked-button color="primary" (click)="data.authmode='register'">Click here to register.</button>
+  </p>
+</div>
+<div *ngIf='data.authmode=="register"'>
+  <app-register-form></app-register-form>
+  <p>
+    Already have an account?
+  </p>
+  <p>
+    <button mat-stroked-button color="primary" (click)="data.authmode='login'">Click here to login.</button>
+  </p>
+</div>

@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AuthDialogComponent } from 'src/app/auth-dialog/auth-dialog.component';
 import { Angular2TokenService } from 'angular2-token';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -9,12 +10,13 @@ import { Angular2TokenService } from 'angular2-token';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  
-  @ViewChild('authDialog') authDialog: AuthDialogComponent;
 
-  constructor(public tokenAuthService:Angular2TokenService) { }
+  constructor(public tokenAuthService:Angular2TokenService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
-
+  openAuthDialog(mode: "login"| "register"){
+    let authDialog = this.dialog.open(AuthDialogComponent,{data: {authmode: mode}});
+    
+  }
 }

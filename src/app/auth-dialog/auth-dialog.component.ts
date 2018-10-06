@@ -1,14 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  authmode: string;
+}
 
 @Component({
   selector: 'app-auth-dialog',
   templateUrl: './auth-dialog.component.html',
   styleUrls: ['./auth-dialog.component.sass']
 })
-export class AuthDialogComponent implements OnInit {
-  @Input('auth-mode') authMode: 'login' | 'register' = 'login';
 
-  constructor() { }
+export class AuthDialogComponent implements OnInit {
+
+  constructor(public dialogRef: MatDialogRef<AuthDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit() {
   }
