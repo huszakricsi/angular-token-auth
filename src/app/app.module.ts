@@ -12,9 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//picked my ones :D
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     //imported material components:
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ],
   entryComponents: [
     MDialogComponent
