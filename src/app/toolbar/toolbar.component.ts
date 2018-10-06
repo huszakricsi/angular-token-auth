@@ -17,6 +17,5 @@ export class ToolbarComponent implements OnInit {
   }
   openAuthDialog(mode: "login"| "register"){
     let authDialog = this.dialog.open(AuthDialogComponent,{data: {authmode: mode}});
-    
   }
 }

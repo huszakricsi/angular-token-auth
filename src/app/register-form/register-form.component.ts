@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-register-form',
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-form.component.sass']
 })
 export class RegisterFormComponent implements OnInit {
-  
   signupuser:any = {};
 
   constructor() { }
