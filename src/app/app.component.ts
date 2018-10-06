@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 import {environment} from "../environments/environment";
 import { MatDialog } from '@angular/material/dialog';
+
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 
 @Component({

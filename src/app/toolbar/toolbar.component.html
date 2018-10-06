@@ -2,13 +2,13 @@
   <mat-toolbar-row>
     <span class="spacer"></span>
     <div class="toolbar-button">
-        <span><!--If not logged in-->
+        <span *ngIf="!tokenAuthService.userSignedIn()"><!--If not logged in-->
           <button mat-flat-button color="primary" >Log in</button>
           <button mat-flat-button color="primary">Register</button>
         </span>
-        <span><!--If logged in-->
-          <button mat-stroked-button color="primary">username</button>
-          <button mat-flat-button color="primary">Log Out</button>
+        <span *ngIf="tokenAuthService.userSignedIn()"><!--If logged in-->
+          <button mat-stroked-button color="primary">{{tokenAuthService.login}}</button>
+          <button mat-flat-button color="primary" (click)="tokenAuthService.signOut()">Log Out</button>
         </span>
     </div>
   </mat-toolbar-row>
