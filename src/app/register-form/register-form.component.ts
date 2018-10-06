@@ -18,7 +18,6 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit() {
   }
   register(): void{
-      console.log(this.registerData);
       this.authToken.registerAccount(this.registerData).subscribe(
         res => {
           console.log(res);
