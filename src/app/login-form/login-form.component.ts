@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
 import { MatDialog } from '@angular/material/dialog';
 import { MDialogComponent } from '../m-dialog/m-dialog.component';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +10,13 @@ import { MDialogComponent } from '../m-dialog/m-dialog.component';
   styleUrls: ['./login-form.component.sass']
 })
 export class LoginFormComponent implements OnInit {
-  
+  @Input() 
+  set setParent(parent: AuthDialogComponent){
+    this.parent=parent;
+  }
+
+  parent: AuthDialogComponent;
+
   loginuser:any = {};
 
   constructor(private authToken: Angular2TokenService, public dialog: MatDialog) { }
@@ -22,11 +29,12 @@ export class LoginFormComponent implements OnInit {
 
       res => {
         console.log(res);
+        this.parent.dialogRef.close();
       },
 
       err => {
-        let opened_dialog=this.dialog.open(MDialogComponent,{data: "Can't login, check console for further informations!"});
-        opened_dialog.afterClosed().subscribe(result => {console.log(result)});
+        let opened_dialog=this.dialog.open(MDialogComponent,{data: JSON.parse(err._body).errors});
+        opened_dialog.afterClosed().subscribe(result => {console.log(err)});
       }
     );
   }
