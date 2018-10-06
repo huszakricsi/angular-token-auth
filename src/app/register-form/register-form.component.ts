@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-form.component.sass']
 })
 export class RegisterFormComponent implements OnInit {
+  
+  signupuser:any = {};
 
   constructor() { }
 

@@ -1,4 +1,5 @@
 <div *ngIf='data.authmode=="login"'>
+  <h3>Welcome Back!</h3>
   <app-login-form></app-login-form>
   <p>
     Need an account?
@@ -8,6 +9,7 @@
   </p>
 </div>
 <div *ngIf='data.authmode=="register"'>
+  <h3>Nice to meet you!</h3>
   <app-register-form></app-register-form>
   <p>
     Already have an account?

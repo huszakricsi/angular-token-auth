@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-form.component.sass']
 })
 export class LoginFormComponent implements OnInit {
+  
+  loginuser:any = {};
 
   constructor() { }
 

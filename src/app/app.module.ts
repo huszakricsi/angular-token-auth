@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import {MatButtonModule} from '@angular/material/button';//picked my ones :D
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +39,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    FormsModule,
 
 
     //angular material
@@ -44,7 +48,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    MatCardModule
   ],
   entryComponents: [
     MDialogComponent,
