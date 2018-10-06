@@ -17,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AppComponent,
     MDialogComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
