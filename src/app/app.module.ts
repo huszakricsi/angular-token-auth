@@ -13,11 +13,13 @@ import {MatButtonModule} from '@angular/material/button';//picked my ones :D
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MDialogComponent } from './m-dialog/m-dialog.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MDialogComponent
+    MDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

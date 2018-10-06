@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   token_auth_config: {
-    apiBase: 'http://localhost:3000'
+    apiBase: 'http://192.168.1.70:3000'
   }
 };
 
