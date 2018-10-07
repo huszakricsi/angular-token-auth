@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 
 import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from "./services/auth.service";
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//picked my ones :D
@@ -56,7 +58,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MDialogComponent,
     AuthDialogComponent
   ],
-  providers: [ Angular2TokenService ],
+  providers: [ 
+    Angular2TokenService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
