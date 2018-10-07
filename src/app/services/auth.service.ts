@@ -12,7 +12,7 @@ export class AuthService {
   constructor(public authService:Angular2TokenService) {
 
     this.authService.validateToken().subscribe(
-        res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+        res => {res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false);}
     )
   }
 
