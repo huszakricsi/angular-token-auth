@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Angular2TokenService} from "angular2-token";
+import {Angular2TokenService, RegisterData} from "angular2-token";
 import {Subject, Observable} from "rxjs";
 import {Response} from "@angular/http";
 
@@ -26,11 +26,11 @@ export class AuthService {
     );
   }
 
-  registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
+  registerUser(signUpData: RegisterData):Observable<Response>{
     return this.authService.registerAccount(signUpData).pipe(
         res => {
           this.userSignedIn$.next(true);
-          return res
+          return res;
         }
     );
   }
