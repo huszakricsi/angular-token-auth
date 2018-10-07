@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
-import { Angular2TokenService, RegisterData } from 'angular2-token';
+import { RegisterData } from 'angular2-token';
 import { MatDialog } from '@angular/material/dialog';
 import { MDialogComponent } from '../m-dialog/m-dialog.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -20,7 +21,7 @@ export class RegisterFormComponent implements OnInit {
 
   registerData: RegisterData = <RegisterData>{};
 
-  constructor(private authToken: Angular2TokenService, public dialog: MatDialog) {
+  constructor(public authService:AuthService, public dialog: MatDialog) {
     this.registerData.email='';
    }
 
@@ -29,7 +30,7 @@ export class RegisterFormComponent implements OnInit {
   register(): void{
     if(this.registerData.email!=''||this.registerData.email==null)
     {
-      this.authToken.registerAccount(this.registerData).subscribe(
+      this.authService.registerUser(this.registerData).subscribe(
         res => {
           console.log(res);
           this.parent.dialogRef.close();
