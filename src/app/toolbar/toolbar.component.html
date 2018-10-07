@@ -7,7 +7,7 @@
           <button mat-flat-button color="primary" (click)='openAuthDialog("register")'>Register</button>
         </span>
         <span *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
-          <button mat-stroked-button color="primary">Profile</button>
+          <button mat-stroked-button color="primary">{{this.angular2TokenService.currentUserData ? this.angular2TokenService.currentUserData.name : "Profile"}}</button>
           <button mat-flat-button color="primary" (click)="logOut()">Log Out</button>
         </span>
     </div>

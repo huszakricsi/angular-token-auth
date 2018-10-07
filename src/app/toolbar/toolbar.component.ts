@@ -3,6 +3,7 @@ import { AuthDialogComponent } from 'src/app/auth-dialog/auth-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import { Angular2TokenService } from 'angular2-token';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(public authService:AuthService, private router:Router, public dialog: MatDialog) { }
+  constructor(public angular2TokenService:Angular2TokenService,public authService:AuthService, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
