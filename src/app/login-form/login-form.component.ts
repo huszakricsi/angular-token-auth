@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
 import { MatDialog } from '@angular/material/dialog';
 import { MDialogComponent } from '../m-dialog/m-dialog.component';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -19,13 +19,13 @@ export class LoginFormComponent implements OnInit {
 
   loginuser:any = {};
 
-  constructor(private authToken: Angular2TokenService, public dialog: MatDialog) { }
+  constructor(public authService:AuthService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
   login(): void
   {
-    this.authToken.signIn({email: this.loginuser.email, password: this.loginuser.password}).subscribe(
+    this.authService.logInUser({email: this.loginuser.email, password: this.loginuser.password}).subscribe(
 
       res => {
         console.log(res);
