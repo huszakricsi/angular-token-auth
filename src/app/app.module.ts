@@ -25,6 +25,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     ToolbarComponent,
     AuthDialogComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
