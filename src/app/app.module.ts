@@ -18,6 +18,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
@@ -54,7 +56,9 @@ import { ProfileComponent } from './profile/profile.component';
     MatDialogModule,
     MatToolbarModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatListModule
   ],
   entryComponents: [
     MDialogComponent,

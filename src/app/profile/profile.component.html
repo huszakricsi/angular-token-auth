@@ -1,3 +1,31 @@
-<p>
-  profile works!
-</p>
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit your profile information
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="userdata.name">
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+            <input matInput placeholder="Nickname" [(ngModel)]="userdata.nickname">
+          </mat-form-field>
+      </div>
+      <div>
+        <button mat-button mat-stroked-button color="primary" (click)='register()'>Done</button>
+      </div>
+    </mat-expansion-panel>
+    <mat-list role="list">
+        <mat-list-item role="listitem">Email:<span class="spacer"></span><b>{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.email ? this.angular2TokenService.currentUserData.email : ""}}</b></mat-list-item>
+        <mat-list-item role="listitem">Name:<span class="spacer"></span><b>{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.name ? this.angular2TokenService.currentUserData.name : "Name not set yet"}}</b></mat-list-item>
+        <mat-list-item role="listitem">NickName:<span class="spacer"></span><b>{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.nickname ? this.angular2TokenService.currentUserData.nickname : "NickName not set yet"}}</b></mat-list-item>
+    </mat-list>
+  </mat-accordion>
+  
