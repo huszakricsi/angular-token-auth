@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { AuthDialogComponent } from 'src/app/auth-dialog/auth-dialog.component';
-import { Angular2TokenService } from 'angular2-token';
 import { MatDialog } from '@angular/material/dialog';
-
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -11,10 +11,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(public tokenAuthService:Angular2TokenService, public dialog: MatDialog) { }
+  constructor(public authService:AuthService, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
+  
+  logOut(){
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['/']));
+  }
+
   openAuthDialog(mode: "login"| "register"){
     let authDialog = this.dialog.open(AuthDialogComponent,{data: {authmode: mode}});
   }

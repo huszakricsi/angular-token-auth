@@ -37,7 +37,7 @@ export class AuthService {
 
   logInUser(signInData: {email:string, password:string}):Observable<Response>{
 
-    return this.authService.signIn(signInData).map(
+    return this.authService.signIn(signInData).pipe(
         res => {
           this.userSignedIn$.next(true);
           return res
