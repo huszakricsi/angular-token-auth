@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {//home component is the default route
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {//added the profile path to profile component
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

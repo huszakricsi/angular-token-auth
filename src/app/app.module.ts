@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from "./services/auth.service";
-
+import {AuthGuard} from "./guards/auth.guard";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//picked my ones :D
@@ -66,7 +66,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [ 
     Angular2TokenService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
