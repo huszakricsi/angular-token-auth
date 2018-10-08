@@ -19,7 +19,29 @@
           </mat-form-field>
       </div>
       <div>
-        <button mat-button mat-stroked-button color="primary" (click)='register()'>Done</button>
+        <button mat-button mat-stroked-button color="primary">Done</button>
+      </div>
+      <div>
+          <mat-form-field>
+              <input matInput placeholder="Password" type="password" [(ngModel)]="updatePasswordData.passwordCurrent" >
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+              <input matInput placeholder="New Password" type="password" [(ngModel)]="updatePasswordData.password" >
+          </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+              <input matInput placeholder="New Password again" type="password" [(ngModel)]="updatePasswordData.passwordConfirmation" >
+          </mat-form-field>
+      </div>
+      <div *ngIf="updatePasswordData.password == updatePasswordData.passwordConfirmation">
+        <button mat-button mat-stroked-button color="primary" (click)=changePassword()>Change password</button>
+      </div>
+      <div *ngIf="updatePasswordData.password != updatePasswordData.passwordConfirmation"
+        style="color:red">
+        Passwords must match
       </div>
     </mat-expansion-panel>
     <mat-list role="list">
