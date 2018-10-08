@@ -12,6 +12,8 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class ToolbarComponent implements OnInit {
 
+  primary:string = "primary";
+
   constructor(public angular2TokenService:Angular2TokenService,public authService:AuthService, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {

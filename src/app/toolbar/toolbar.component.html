@@ -1,15 +1,21 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span class="spacer"></span>
-    <div class="toolbar-button">
-        <span *ngIf="!(this.authService.userSignedIn$ | async)"><!--If not logged in-->
+<mat-toolbar color="{{(this.authService.userSignedIn$ | async) ? primary : null}}" class="toolbar-button">
+    <mat-toolbar-row *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
+      <span>
+          <button mat-stroked-button color="basic" (click)="this.router.navigate(['/'])">Home</button>
+      </span>
+      <!-- This fills the remaining space of the current row -->
+      <span class="spacer"></span>
+      <span>
+          <button mat-stroked-button color="basic" (click)="this.router.navigate(['/profile'])">{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.name ? this.angular2TokenService.currentUserData.name : "Profile"}}</button>
+          <button mat-stroked-button color="basic" (click)="logOut()">Log Out</button>
+      </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!(this.authService.userSignedIn$ | async)"><!--If not logged in-->
+      <!-- This fills the remaining space of the current row -->
+      <span class="spacer"></span>
+      <span>
           <button mat-flat-button color="primary" (click)='openAuthDialog("login")'>Log in</button>
           <button mat-flat-button color="primary" (click)='openAuthDialog("register")'>Register</button>
-        </span>
-        <span *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
-          <button mat-stroked-button color="primary" (click)="this.router.navigate(['/profile'])">{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.name ? this.angular2TokenService.currentUserData.name : "Profile"}}</button>
-          <button mat-flat-button color="primary" (click)="logOut()">Log Out</button>
-        </span>
-    </div>
-  </mat-toolbar-row>
+      </span>
+    </mat-toolbar-row>
 </mat-toolbar>
