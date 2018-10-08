@@ -29,7 +29,6 @@ export class AuthService {
   registerUser(signUpData: RegisterData):Observable<Response>{
     return this.authService.registerAccount(signUpData).pipe(
         res => {
-          this.userSignedIn$.next(true);
           return res;
         }
     );
@@ -39,7 +38,6 @@ export class AuthService {
 
     return this.authService.signIn(signInData).pipe(
         res => {
-          this.userSignedIn$.next(true);
           return res
         }
     );

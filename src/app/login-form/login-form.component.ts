@@ -29,6 +29,7 @@ export class LoginFormComponent implements OnInit {
 
       res => {
         console.log(res);
+        this.authService.userSignedIn$.next(true);
         this.parent.dialogRef.close();
       },
 

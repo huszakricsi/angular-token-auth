@@ -33,6 +33,7 @@ export class RegisterFormComponent implements OnInit {
       this.authService.registerUser(this.registerData).subscribe(
         res => {
           console.log(res);
+          this.authService.userSignedIn$.next(true);
           this.parent.dialogRef.close();
         },
 
