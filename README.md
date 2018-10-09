@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Added "how to access outside localhost" to readme
+## How to access outside localhost
+
+Let the port go through the firewall (4200)
+Then:
+```sh
+$ ng serve --host 0.0.0.0
+```
