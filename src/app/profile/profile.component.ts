@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     options.withCredentials=true;
     this.http.post("http://localhost:3000/profile/update", {name: this.userdata.name , nickname: this.userdata.nickname}, options).subscribe(
       res =>{
-        if( JSON.parse(res._body).success==true)
+        if( res.json()['success']==true)
         {
           this.dialog.open(MDialogComponent,{data: 'User Data changed successfully!'});
           this.authService.logOutUser();

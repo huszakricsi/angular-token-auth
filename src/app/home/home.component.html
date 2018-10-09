@@ -2,5 +2,5 @@
   <h1>Please sign in or register</h1>
 </span>
 <span *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
-  <h1>Welcome back{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.name ? (", " + this.angular2TokenService.currentUserData.name):""}}!</h1>
+  <h1>Welcome back{{this.angular2TokenService.currentUserData&&this.angular2TokenService.currentUserData.nickname ? (", " + this.angular2TokenService.currentUserData.nickname):""}}!</h1>
 </span>
