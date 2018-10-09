@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
   }
   
   logOut(){
-    this.authService.logOutUser().subscribe(() => this.router.navigate(['/']));
+    this.authService.logOutUser().subscribe().add(() => this.router.navigate(['/']));
   }
 
   openAuthDialog(mode: "login"| "register"){

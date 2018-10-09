@@ -39,13 +39,18 @@ export class RegisterFormComponent implements OnInit {
 
         err => {
           let opened_dialog=this.dialog.open(MDialogComponent,{data: JSON.parse(err._body).errors.full_messages});
-          opened_dialog.afterClosed().subscribe(result => {console.log(err)});
+          opened_dialog.afterClosed().subscribe().add(result => {console.log(err)});
         }
       );
     }
     else{
       this.dialog.open(MDialogComponent,{data: "Email field can not be empty."});
     }
-      
   }
+  onKeyUp(event:any){
+    if(event.keyCode == 13){
+      this.register();
+    }else{
+    }
+ }
 }

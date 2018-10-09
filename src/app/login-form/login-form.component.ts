@@ -35,8 +35,14 @@ export class LoginFormComponent implements OnInit {
 
       err => {
         let opened_dialog=this.dialog.open(MDialogComponent,{data: JSON.parse(err._body).errors});
-        opened_dialog.afterClosed().subscribe(result => {console.log(err)});
+        opened_dialog.afterClosed().subscribe().add(result => {console.log(err)});
       }
     );
   }
+  onKeyUp(event:any){
+    if(event.keyCode == 13){
+      this.login();
+    }else{
+    }
+ }
 }
