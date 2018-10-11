@@ -28,6 +28,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ActionCableService } from 'angular2-actioncable';
 
 
 @NgModule({
@@ -46,7 +47,6 @@ import { ProfileComponent } from './profile/profile.component';
     HttpModule,
     AppRoutingModule,
     FormsModule,
-
 
     //angular material
     BrowserAnimationsModule,
@@ -67,7 +67,8 @@ import { ProfileComponent } from './profile/profile.component';
   providers: [ 
     Angular2TokenService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ActionCableService
   ],
   bootstrap: [AppComponent]
 })

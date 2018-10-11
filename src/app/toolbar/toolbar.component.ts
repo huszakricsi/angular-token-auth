@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
   }
   
   logOut(){
-    this.authService.logOutUser().subscribe().add(() => this.router.navigate(['/']));
+    this.authService.logOutUser().subscribe().add(() => this.router.navigate(['/']));//should we only use subscribe().add(...) when we we implemented a function as observable?
   }
 
   openAuthDialog(mode: "login"| "register"){
