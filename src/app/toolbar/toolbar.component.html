@@ -1,7 +1,8 @@
 <mat-toolbar color="{{(this.authService.userSignedIn$ | async) ? primary : null}}" class="toolbar-button">
     <mat-toolbar-row *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
       <span>
-          <button mat-stroked-button color="basic" (click)="this.router.navigate(['/'])">Home</button>
+        <button mat-stroked-button color="basic" (click)="this.router.navigate(['/'])">Home</button>
+        <button mat-stroked-button color="basic" (click)="this.router.navigate(['/chatroom'])">Chat rooms</button>
       </span>
       <!-- This fills the remaining space of the current row -->
       <span class="spacer"></span>

@@ -1,0 +1,16 @@
+<mat-form-field>
+  <input matInput placeholder="Conversation title" [(ngModel)]="this.identifier" >
+</mat-form-field>
+<mat-list>
+    <h3 mat-subheader>Participants</h3>
+    <mat-list-item *ngFor="let current of data">
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <mat-checkbox [(ngModel)]="current.checked">
+          <h4 mat-line>{{current.name?current.name:current.email}}</h4>
+      </mat-checkbox>
+    </mat-list-item>
+  </mat-list>
+
+<div>
+    <button mat-stroked-button style="float: right;" (click)='ok()'>Ok</button>
+</div>

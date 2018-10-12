@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpModule } from '@angular/http';
-
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from "./services/auth.service";
 import {AuthGuard} from "./guards/auth.guard";
+
+import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';//picked my ones :D
@@ -20,6 +21,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
@@ -29,6 +32,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ActionCableService } from 'angular2-actioncable';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dialog.component';
 
 
 @NgModule({
@@ -40,13 +45,16 @@ import { ActionCableService } from 'angular2-actioncable';
     AuthDialogComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatroomComponent,
+    UserPickerDialogComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
+    HttpClientModule,
 
     //angular material
     BrowserAnimationsModule,
@@ -58,17 +66,21 @@ import { ActionCableService } from 'angular2-actioncable';
     MatInputModule,
     MatCardModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   entryComponents: [
     MDialogComponent,
-    AuthDialogComponent
+    AuthDialogComponent,
+    UserPickerDialogComponent
   ],
   providers: [ 
     Angular2TokenService,
     AuthService,
     AuthGuard,
-    ActionCableService
+    ActionCableService,
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

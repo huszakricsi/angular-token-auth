@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { AuthGuard } from './guards/auth.guard';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 const routes: Routes = [
   {//home component is the default route
@@ -17,6 +18,11 @@ const routes: Routes = [
   {//added the profile path to profile component
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'chatroom',
+    component: ChatroomComponent,
     canActivate: [AuthGuard]
   }
 ];
