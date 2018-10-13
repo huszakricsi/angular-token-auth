@@ -1,31 +1,50 @@
 <div class="main">
   <div class="left">
       <mat-list>
-          <h3 mat-subheader>Chats</h3>
+          <h3 mat-subheader>Chat groups</h3>
           <mat-list-item *ngFor="let conversation of conversations">
             <mat-icon mat-list-icon>chat</mat-icon>
             <h4 mat-line>{{conversation.identifier}}</h4>
             <p mat-line> {{conversation.created_at | date}} </p>
-            <button mat-button mat-stroked-button color="primary" (click)=Open(conversation)>Open</button>
+            <button mat-icon-button (click)=Delete(conversation)>
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button (click)=Open(conversation)>
+              <mat-icon>keyboard</mat-icon>
+            </button>
           </mat-list-item>
-          <h3 mat-subheader>You don't have any conversration yet, click the button, to create one!</h3>
         </mat-list>
-    <button mat-button mat-stroked-button color="primary" (click)=CreateChatroom()>Create a conversation!</button>
+        <button mat-button mat-stroked-button color="primary" (click)=CreateChatroom()>Create a group!</button>
+        <mat-list>
+            <h3 mat-subheader>Users</h3>
+            <mat-list-item *ngFor="let user of users">
+              <mat-icon mat-list-icon>person</mat-icon>
+              <h4 mat-line>{{(user.name==null||user.name==""?user.uid:user.name)+(user.nickname==null||user.nickname==""? "":" ("+user.nickname+")")}}</h4>
+              <button mat-icon-button (click)=OpenUserConversation(user)>
+                <mat-icon>keyboard</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
   </div>    
   <div class="right">
-      <div *ngIf="!conversation_channel">
-        <h1 mat-line>Please select, or create a conversation!</h1>
+      <div *ngIf="!(conversation_channel)">
+        <h1 mat-line>Create a chat group, or select a partner to chat with!</h1>
       </div>
-      <div *ngIf="conversation_channel">
+      <div *ngIf="conversation_channel&&conversation">
         <mat-card>
           <mat-card-header>
-            <mat-card-title>CHATNÉV</mat-card-title>
+            <mat-card-title>
+              <h2 mat-line>{{conv_title}}</h2>
+            </mat-card-title>
           </mat-card-header>
           <mat-card-content>
               <mat-card *ngFor="let message of messages"  class="message">
                 <mat-card-header>
                   <mat-card-title>
                     {{getUserNameById(message.user_id)}}
+                    <button mat-icon-button *ngIf="message.user_id==this.angular2TokenService.currentUserData.id" (click)=DeleteMessage(message)>
+                      <mat-icon>delete</mat-icon>
+                    </button>
                   </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
