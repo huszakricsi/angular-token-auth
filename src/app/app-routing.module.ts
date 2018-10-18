@@ -4,6 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { AuthGuard } from './guards/auth.guard';
 import { ChatroomComponent } from './chatroom/chatroom.component';
+import { MobileGuard } from './guards/mobile.guard';
+import { MobileChatroomComponent } from './mobile-chatroom/mobile-chatroom.component';
 
 const routes: Routes = [
   {//home component is the default route
@@ -23,6 +25,11 @@ const routes: Routes = [
   {
     path: 'chatroom',
     component: ChatroomComponent,
+    canActivate: [AuthGuard,MobileGuard]
+  },
+  {
+    path: 'mobilechatroom',
+    component: MobileChatroomComponent,
     canActivate: [AuthGuard]
   }
 ];

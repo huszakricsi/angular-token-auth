@@ -1,26 +1,23 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Angular2TokenService } from 'angular2-token';
 import { ActionCableService, Channel } from 'angular2-actioncable';
 import { MatDialog } from '@angular/material/dialog';
-import { UserPickerDialogComponent } from '../user-picker-dialog/user-picker-dialog.component';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
+import { Angular2TokenService } from 'angular2-token';
+import { UserPickerDialogComponent } from '../user-picker-dialog/user-picker-dialog.component';
 
 @Component({
-  selector: 'app-chatroom',
-  templateUrl: './chatroom.component.html',
-  styleUrls: ['./chatroom.component.scss']
+  selector: 'app-mobile-chatroom',
+  templateUrl: './mobile-chatroom.component.html',
+  styleUrls: ['./mobile-chatroom.component.scss']
 })
-export class ChatroomComponent implements OnInit, AfterViewInit {
-
-  ngAfterViewInit(): void {
-    // this.scrollable.elementScrolled().subscribe(a=>{
-    //   console.log("chat scrolled");
-    //   console.log(a);
-    // });
-  } 
+export class MobileChatroomComponent implements OnInit {
 
   overview_channel: Channel;
+
+  opened_drawer_click_time: number;
+
+  opened_drawer=false;
 
   conversation_channel: Channel;
   
@@ -81,6 +78,19 @@ export class ChatroomComponent implements OnInit, AfterViewInit {
       this.conversations=chatrooms_pub;
     });
   }
+
+  open_drawer(){
+    this.opened_drawer_click_time= Date.now();
+    this.opened_drawer=true;
+  }
+
+  close_drawer(){
+    if(this.opened_drawer_click_time+50<Date.now())
+    {
+      this.opened_drawer=false;
+    }
+  }
+
   CreateChatroom():void{
     const httpOptions = {
       headers: new HttpHeaders({
@@ -108,6 +118,7 @@ export class ChatroomComponent implements OnInit, AfterViewInit {
     );
   }
   OpenUserConversation(user):void{
+    this.close_drawer();
     if(this.conversation_channel!=null){
       this.conversation_channel.unsubscribe();
       this.conversation=null;
@@ -145,6 +156,7 @@ export class ChatroomComponent implements OnInit, AfterViewInit {
     }
   }
   Open(conversation):void{
+    this.close_drawer();
     if(this.conversation_channel!=null){
       this.conversation_channel.unsubscribe();
     }

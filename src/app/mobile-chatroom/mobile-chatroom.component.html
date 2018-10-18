@@ -1,0 +1,71 @@
+<mat-drawer-container class="main">
+  <mat-drawer mode="side"  [(opened)]="opened_drawer">
+    <mat-list>
+      <h3 mat-subheader>Chat groups</h3>
+      <mat-list-item *ngFor="let conversation of conversations">
+        <mat-icon mat-list-icon>chat</mat-icon>
+        <h4 mat-line>{{conversation.identifier}}</h4>
+        <p mat-line> {{conversation.created_at | date}} </p>
+        <button mat-icon-button (click)=Delete(conversation)>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)=Open(conversation)>
+          <mat-icon>keyboard</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button mat-stroked-button color="primary" (click)=CreateChatroom()>Create a group!</button>
+    <mat-list>
+      <h3 mat-subheader>Users</h3>
+      <mat-list-item *ngFor="let user of users">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line>{{(user.name==null||user.name==""?user.uid:user.name)+(user.nickname==null||user.nickname==""? "":" ("+user.nickname+")")}}</h4>
+        <button mat-icon-button (click)=OpenUserConversation(user)>
+          <mat-icon>keyboard</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content (click)=close_drawer()>
+    <div>
+        <div [hidden]="conversation_channel">
+          <h1 mat-line>Create a chat group, or select a partner to chat with!</h1>
+        </div>
+        <div [hidden]="!(conversation_channel&&conversation)">
+          <mat-card>
+            <mat-card-header class=conversation_label>
+              <mat-card-title>
+                <h2 mat-line>{{conv_title}}</h2>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content cdkScrollable class="chat-scrollable">
+                <mat-card *ngFor="let message of messages" class="message">
+                  <mat-card-header>
+                    <mat-card-title class="chat_message">
+                      {{getUserNameById(message.user_id)}}
+                      <button mat-icon-button *ngIf="message.user_id==this.angular2TokenService.currentUserData.id" (click)=DeleteMessage(message)>
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                      <p>
+                        {{message.content}}
+                      </p>
+                  </mat-card-content>
+                </mat-card>
+                <div id="come_my_friend"></div>
+            </mat-card-content>
+            <mat-card-actions class=textinput (keyup)="onKeyUp($event)">
+                <mat-form-field class="full-width">
+                    <textarea matInput [(ngModel)]="this.current_message" placeholder="Send a message"></textarea>
+                  </mat-form-field>
+            </mat-card-actions>
+          </mat-card>
+        </div>  
+      <button class="drawerButton" *ngIf="!opened_drawer" mat-fab color=primary (click)=open_drawer()>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

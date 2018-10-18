@@ -7,4 +7,20 @@
 }
 .height{
     height: 5vh;
+    width: 100%;
+}
+.middle{
+    text-align: center;
+    width: 60%;
+    display: inline-block;
+}
+.left{
+    text-align: left;
+    width: 20%;
+    display: inline-block;
+}
+.right{
+    text-align: right;
+    width: 20%;
+    display: inline-block;
 }

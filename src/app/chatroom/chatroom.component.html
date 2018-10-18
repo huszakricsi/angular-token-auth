@@ -40,7 +40,7 @@
           <mat-card-content cdkScrollable class="make-scrollable">
               <mat-card *ngFor="let message of messages" class="message">
                 <mat-card-header>
-                  <mat-card-title class="chat_message">
+                  <mat-card-title>
                     {{getUserNameById(message.user_id)}}
                     <button mat-icon-button *ngIf="message.user_id==this.angular2TokenService.currentUserData.id" (click)=DeleteMessage(message)>
                       <mat-icon>delete</mat-icon>

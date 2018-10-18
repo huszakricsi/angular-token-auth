@@ -23,6 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
@@ -36,6 +38,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ActionCableService } from 'angular2-actioncable';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dialog.component';
+import { MobileChatroomComponent } from './mobile-chatroom/mobile-chatroom.component';
+import { MobileGuard } from './guards/mobile.guard';
 
 
 @NgModule({
@@ -49,7 +53,8 @@ import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dial
     RegisterFormComponent,
     ProfileComponent,
     ChatroomComponent,
-    UserPickerDialogComponent
+    UserPickerDialogComponent,
+    MobileChatroomComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,9 @@ import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dial
     MatListModule,
     MatCheckboxModule,
     MatChipsModule,
-
+    MatSidenavModule,
+    MatMenuModule,
+    
     //imported cdk components
     ScrollDispatchModule 
   ],
@@ -84,6 +91,7 @@ import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dial
     Angular2TokenService,
     AuthService,
     AuthGuard,
+    MobileGuard,
     ActionCableService,
     HttpClient
   ],

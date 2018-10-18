@@ -26,4 +26,7 @@ export class ToolbarComponent implements OnInit {
   openAuthDialog(mode: "login"| "register"){
     let authDialog = this.dialog.open(AuthDialogComponent,{data: {authmode: mode}});
   }
+  isMobile():boolean{
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
 }
