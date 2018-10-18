@@ -27,20 +27,20 @@
           </mat-list>
   </div>    
   <div class="right">
-      <div *ngIf="!(conversation_channel)">
+      <div [hidden]="conversation_channel">
         <h1 mat-line>Create a chat group, or select a partner to chat with!</h1>
       </div>
-      <div *ngIf="conversation_channel&&conversation">
+      <div [hidden]="!(conversation_channel&&conversation)">
         <mat-card>
           <mat-card-header>
             <mat-card-title>
               <h2 mat-line>{{conv_title}}</h2>
             </mat-card-title>
           </mat-card-header>
-          <mat-card-content>
-              <mat-card *ngFor="let message of messages"  class="message">
+          <mat-card-content cdkScrollable class="make-scrollable">
+              <mat-card *ngFor="let message of messages" class="message">
                 <mat-card-header>
-                  <mat-card-title>
+                  <mat-card-title class="chat_message">
                     {{getUserNameById(message.user_id)}}
                     <button mat-icon-button *ngIf="message.user_id==this.angular2TokenService.currentUserData.id" (click)=DeleteMessage(message)>
                       <mat-icon>delete</mat-icon>
@@ -53,6 +53,7 @@
                     </p>
                 </mat-card-content>
               </mat-card>
+              <div id="come_my_friend"></div>
           </mat-card-content>
           <mat-card-actions (keyup)="onKeyUp($event)">
               <mat-form-field class="full-width">

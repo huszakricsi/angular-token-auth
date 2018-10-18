@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Angular2TokenService } from 'angular2-token';
 import { ActionCableService, Channel } from 'angular2-actioncable';
 import { MatDialog } from '@angular/material/dialog';
 import { UserPickerDialogComponent } from '../user-picker-dialog/user-picker-dialog.component';
+import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-chatroom',
   templateUrl: './chatroom.component.html',
   styleUrls: ['./chatroom.component.scss']
 })
-export class ChatroomComponent implements OnInit {
+export class ChatroomComponent implements OnInit, AfterViewInit {
+
+  ngAfterViewInit(): void {
+    // this.scrollable.elementScrolled().subscribe(a=>{
+    //   console.log("chat scrolled");
+    //   console.log(a);
+    // });
+  } 
 
   overview_channel: Channel;
 
@@ -32,8 +40,10 @@ export class ChatroomComponent implements OnInit {
 
   conversations = [];
 
-  constructor(public angular2TokenService:Angular2TokenService, private http: HttpClient, private cableService: ActionCableService, public dialog: MatDialog) { }
+  @ViewChild(CdkScrollable) scrollable: CdkScrollable; 
 
+  constructor(public angular2TokenService:Angular2TokenService, private http: HttpClient, private cableService: ActionCableService, public dialog: MatDialog, public scroll: ScrollDispatcher) { }
+ 
   ngOnInit() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -108,8 +118,17 @@ export class ChatroomComponent implements OnInit {
       this.users_in_room=res['users'];
       this.conversation=this.finduserconversationbyuser(user);
       this.conv_title=this.getUserNameById(user.id);
+      var millisecondsToWait = 100;
+      setTimeout(this.scrolltolast, millisecondsToWait);
     });
-  }  
+  }
+  logit(){
+    console.log(this.messages);
+  }
+  scrolltolast(){
+    let el:HTMLElement = document.getElementById("come_my_friend");
+    el.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
   finduserconversationbyuser(user):any{
     let identifier="";
     if (user["id"]<this.angular2TokenService.currentUserData.id) {
@@ -135,6 +154,9 @@ export class ChatroomComponent implements OnInit {
       console.log(res);
       this.messages=res['messages'];
       this.users_in_room=res['users'];
+      this.scrolltolast();
+      var millisecondsToWait = 100;
+      setTimeout(this.scrolltolast, millisecondsToWait);
     });
   }  
   Delete(conversation):void{
@@ -175,4 +197,5 @@ export class ChatroomComponent implements OnInit {
     }
     return ret;
   }
+
 }

@@ -1,4 +1,4 @@
-<mat-toolbar color="{{(this.authService.userSignedIn$ | async) ? primary : null}}" class="toolbar-button">
+<mat-toolbar color="{{(this.authService.userSignedIn$ | async) ? primary : null}}" class="height toolbar-button">
     <mat-toolbar-row *ngIf="(this.authService.userSignedIn$ | async)"><!--If logged in-->
       <span>
         <button mat-stroked-button color="basic" (click)="this.router.navigate(['/'])">Home</button>

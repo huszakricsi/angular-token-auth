@@ -24,6 +24,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+
 import { MDialogComponent } from './m-dialog/m-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -68,7 +70,10 @@ import { UserPickerDialogComponent } from './user-picker-dialog/user-picker-dial
     MatExpansionModule,
     MatListModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+
+    //imported cdk components
+    ScrollDispatchModule 
   ],
   entryComponents: [
     MDialogComponent,
